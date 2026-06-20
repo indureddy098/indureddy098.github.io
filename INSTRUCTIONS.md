@@ -92,13 +92,62 @@ If your photo is called `IMG_4823.jpg`, just rename it to `gallery-01.jpg` (or w
 
 ---
 
-## 3. Preview before you publish
+## 3. Run the site locally (before pushing)
 
-Double-click `index.html` and it should open in your browser. The placeholder images will be broken (because you haven't added the files yet) — that's expected. Once you drop real photos with the right names into `images/`, refresh the page and they'll appear.
+You can preview the site on your computer without pushing to GitHub.
+
+**Easiest: double-click `index.html`** — it opens in your browser straight from your hard drive. URL will start with `file:///`. That's fine for everything except the edit mode "Copy code" button, which needs the next method.
+
+**Better: start a local web server (one PowerShell command):**
+
+```powershell
+cd "$env:USERPROFILE\OneDrive\Desktop\modeling-portfolio"
+python -m http.server 8000
+```
+
+Then open **http://localhost:8000** in your browser. Press Ctrl+C in PowerShell to stop the server when done. (Requires Python; install from https://python.org if you don't have it — check the "Add to PATH" box during install.)
 
 ---
 
-## 4. Updating the site later
+## 4. Adjust how each photo fits (Edit Mode)
+
+Every photo has hidden settings — zoom, position, crop-vs-fit — that you can visually tweak. The Edit Mode UI lets you adjust them with sliders and drag-and-drop.
+
+### How to use it
+
+1. Run the site locally (see step 3).
+2. Visit **http://localhost:8000/?edit=1** (the `?edit=1` is what activates edit mode).
+3. An orange banner appears at the top.
+4. **Click any photo** to select it (orange outline = selected).
+5. Use the panel in the bottom-right:
+   - **Crop to fill** / **Show whole photo** — two ways to fit the photo into its frame
+   - **Zoom slider** (1×–3×) — or scroll the mouse wheel on the selected photo
+   - **Horizontal / Vertical position** sliders — or just drag the photo with your mouse
+   - **Reset this photo** — back to defaults
+6. Click another photo to switch and adjust it the same way.
+7. When everything looks right, click **Copy code**.
+
+### Saving your adjustments permanently
+
+The edit panel only updates the photos in your browser preview — changes aren't saved automatically (this is intentional, so the live site can never be edited from a browser).
+
+To make changes permanent:
+
+1. Click **Copy code** in the edit panel — your clipboard now has the updated config block.
+2. Open `index.html` in Notepad.
+3. Find the block near the top that starts with `<script id="portfolio-data"` and ends with `</script>`.
+4. Delete everything **between** `<script id="portfolio-data" type="application/json">` and `</script>` (the JSON object — starts with `{` and ends with `}`).
+5. Paste in the copied code.
+6. Save the file.
+7. Push to GitHub (see step 5 below).
+
+### Important: the edit panel does NOT show on the live site
+
+Edit mode only activates when the URL has `?edit=1`. Your live visitors will never see the orange banner or panel, even if they somehow visit `yoursite.com/?edit=1` (they can play with it, but nothing they change is saved — only YOU can save changes by pasting the copied code into `index.html` and pushing).
+
+---
+
+## 5. Updating the site later
 
 Once it's on GitHub Pages (see the chat for setup), to make a change you'll:
 
