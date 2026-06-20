@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Portfolio</title>
+  <meta name="description" content="Modeling portfolio" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500&family=Inter:wght@300;400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+<!-- =====================================================================
+     >>>>>  EDIT YOUR PERSONAL INFO BELOW — THIS IS THE ONLY PLACE  <<<<<
+     Everything inside the data-edit block is what shows on the site.
+     Don't touch the HTML tags or class names — just replace the text
+     between the > and < symbols.
+     ===================================================================== -->
+<script id="portfolio-data" type="application/json">
+{
+  "name": "YOUR NAME",
+  "tagline": "Editorial · Commercial · Runway",
+
+  "stats": {
+    "Height":       "5'9\" / 175 cm",
+    "Bust":         "32\" / 81 cm",
+    "Waist":        "24\" / 61 cm",
+    "Hips":         "34\" / 86 cm",
+    "Dress":        "US 2 / EU 34",
+    "Shoe":         "US 8 / EU 39",
+    "Hair":         "Brown",
+    "Eyes":         "Hazel",
+    "Location":     "City, Country"
+  },
+
+  "contact": {
+    "email":     "you@example.com",
+    "instagram": "@yourhandle",
+    "instagramUrl": "https://instagram.com/yourhandle",
+    "agency":    "Freelance"
+  },
+
+  "hero":    { "image": "images/hero.jpg", "alt": "Hero portrait" },
+  "gallery": [
+    { "image": "images/gallery-01.jpg", "alt": "Gallery image 1" },
+    { "image": "images/gallery-02.jpg", "alt": "Gallery image 2" },
+    { "image": "images/gallery-03.jpg", "alt": "Gallery image 3" },
+    { "image": "images/gallery-04.jpg", "alt": "Gallery image 4" },
+    { "image": "images/gallery-05.jpg", "alt": "Gallery image 5" },
+    { "image": "images/gallery-06.jpg", "alt": "Gallery image 6" },
+    { "image": "images/gallery-07.jpg", "alt": "Gallery image 7" },
+    { "image": "images/gallery-08.jpg", "alt": "Gallery image 8" }
+  ]
+}
+</script>
+<!-- =====================================================================
+     >>>>>  END EDITABLE BLOCK — nothing below needs to change  <<<<<
+     ===================================================================== -->
+
+<header class="nav">
+  <a href="#top" class="brand" data-bind="name">YOUR NAME</a>
+  <nav>
+    <a href="#gallery">Portfolio</a>
+    <a href="#stats">Stats</a>
+    <a href="#contact">Contact</a>
+  </nav>
+</header>
+
+<main id="top">
+
+  <section class="hero">
+    <img class="hero-img" data-bind-src="hero.image" data-bind-alt="hero.alt" src="" alt="" loading="eager" />
+    <div class="hero-text">
+      <h1 data-bind="name">YOUR NAME</h1>
+      <p class="tagline" data-bind="tagline">Tagline goes here</p>
+    </div>
+  </section>
+
+  <section id="stats" class="stats">
+    <h2>Stats</h2>
+    <dl class="stats-grid" data-bind-stats></dl>
+  </section>
+
+  <section id="gallery" class="gallery">
+    <h2>Portfolio</h2>
+    <div class="gallery-grid" data-bind-gallery></div>
+  </section>
+
+  <section id="contact" class="contact">
+    <h2>Contact</h2>
+    <p>For bookings, inquiries, and collaborations.</p>
+    <ul class="contact-list">
+      <li><span>Email</span> <a data-bind-href="contact.email" data-bind="contact.email" data-href-prefix="mailto:"></a></li>
+      <li><span>Instagram</span> <a data-bind-href="contact.instagramUrl" data-bind="contact.instagram" target="_blank" rel="noopener"></a></li>
+      <li><span>Representation</span> <span data-bind="contact.agency"></span></li>
+    </ul>
+  </section>
+
+</main>
+
+<footer>
+  <p>&copy; <span id="year"></span> <span data-bind="name"></span></p>
+</footer>
+
+<div class="lightbox" id="lightbox" aria-hidden="true" role="dialog">
+  <button class="lightbox-close" aria-label="Close">&times;</button>
+  <button class="lightbox-prev" aria-label="Previous">&#10094;</button>
+  <img class="lightbox-img" alt="" />
+  <button class="lightbox-next" aria-label="Next">&#10095;</button>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
