@@ -112,7 +112,31 @@
       "posY": 50,
       "scale": 1
     }
-  ]
+  ],
+  "labels": {
+    "navPortfolio":    "Portfolio",
+    "navStats":        "Stats",
+    "navContact":      "Contact",
+    "statsTitle":      "Stats",
+    "galleryTitle":    "Portfolio",
+    "contactTitle":    "Contact",
+    "contactSubtitle": "For bookings, inquiries, and collaborations.",
+    "emailLabel":      "Email",
+    "instagramLabel":  "Instagram",
+    "agencyLabel":     "Representation"
+  },
+  "theme": {
+    "accent":         "#1a1a1a",
+    "background":     "#fafaf8",
+    "text":           "#1a1a1a",
+    "muted":          "#6b6b6b",
+    "heroOverlay":    0,
+    "galleryAspect":  "3 / 4",
+    "galleryColumns": 260,
+    "galleryGap":     16,
+    "fontHeading":    "Cormorant Garamond",
+    "fontBody":       "Inter"
+  }
 }
 </script>
 <!-- =====================================================================
@@ -122,9 +146,9 @@
 <header class="nav">
   <a href="#top" class="brand" data-bind="name">YOUR NAME</a>
   <nav>
-    <a href="#gallery">Portfolio</a>
-    <a href="#stats">Stats</a>
-    <a href="#contact">Contact</a>
+    <a href="#gallery" data-bind="labels.navPortfolio">Portfolio</a>
+    <a href="#stats" data-bind="labels.navStats">Stats</a>
+    <a href="#contact" data-bind="labels.navContact">Contact</a>
   </nav>
 </header>
 
@@ -139,22 +163,22 @@
   </section>
 
   <section id="stats" class="stats">
-    <h2>Stats</h2>
+    <h2 data-bind="labels.statsTitle">Stats</h2>
     <dl class="stats-grid" data-bind-stats></dl>
   </section>
 
   <section id="gallery" class="gallery">
-    <h2>Portfolio</h2>
+    <h2 data-bind="labels.galleryTitle">Portfolio</h2>
     <div class="gallery-grid" data-bind-gallery></div>
   </section>
 
   <section id="contact" class="contact">
-    <h2>Contact</h2>
-    <p>For bookings, inquiries, and collaborations.</p>
+    <h2 data-bind="labels.contactTitle">Contact</h2>
+    <p data-bind="labels.contactSubtitle">For bookings, inquiries, and collaborations.</p>
     <ul class="contact-list">
-      <li><span>Email</span> <a data-bind-href="contact.email" data-bind="contact.email" data-href-prefix="mailto:"></a></li>
-      <li><span>Instagram</span> <a data-bind-href="contact.instagramUrl" data-bind="contact.instagram" target="_blank" rel="noopener"></a></li>
-      <li><span>Representation</span> <span data-bind="contact.agency"></span></li>
+      <li><span data-bind="labels.emailLabel">Email</span> <a data-bind-href="contact.email" data-bind="contact.email" data-href-prefix="mailto:"></a></li>
+      <li><span data-bind="labels.instagramLabel">Instagram</span> <a data-bind-href="contact.instagramUrl" data-bind="contact.instagram" target="_blank" rel="noopener"></a></li>
+      <li><span data-bind="labels.agencyLabel">Representation</span> <span data-bind="contact.agency"></span></li>
     </ul>
   </section>
 
