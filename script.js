@@ -93,11 +93,22 @@
     applyImageSettings(heroImg, data.hero);
   };
 
+  const refreshContactVisibility = () => {
+    document.querySelectorAll('.contact-list li').forEach(li => {
+      const valEl = li.querySelector('[data-bind^="contact."]');
+      if (!valEl) return;
+      const path = valEl.getAttribute('data-bind');
+      const v = getPath(data, path);
+      li.style.display = (v && String(v).trim()) ? '' : 'none';
+    });
+  };
+
   applyTheme();
   bindAll();
   renderHero();
   renderStats();
   renderGallery();
+  refreshContactVisibility();
 
   const yearEl = document.getElementById('year');
   if (yearEl) yearEl.textContent = new Date().getFullYear();
@@ -446,6 +457,7 @@
         if (isHref) {
           document.querySelectorAll(`[data-bind-href="${path}"]`).forEach(el => el.href = (hrefPrefix || '') + e.target.value);
         }
+        if (path.startsWith('contact.')) refreshContactVisibility();
       });
     };
     wire('c-email', 'contact.email', true, 'mailto:');
