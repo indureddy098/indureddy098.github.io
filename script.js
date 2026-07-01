@@ -83,8 +83,10 @@
       const img = el.querySelector(`[data-conf-key="gallery.${i}"]`);
       if (img) applyImageSettings(img, g);
     });
-    if (editMode) wireImageEditClicks();
+    if (editMode && typeof wireImageEditClicks === 'function') wireImageEditClicks();
   };
+
+  var wireImageEditClicks;
 
   const renderHero = () => {
     const heroImg = document.querySelector('.hero-img');
@@ -192,7 +194,7 @@
     refreshPhotosTab();
   };
 
-  const wireImageEditClicks = () => {
+  wireImageEditClicks = () => {
     document.querySelectorAll('.editable').forEach(img => {
       img.onclick = e => { e.preventDefault(); e.stopPropagation(); selectImage(img); };
     });
