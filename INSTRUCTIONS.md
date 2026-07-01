@@ -55,10 +55,12 @@ Put all photos inside the `images/` folder, using these exact filenames:
 
 | Filename | Where it shows |
 |---|---|
-| `hero.jpg` | Big full-screen photo at the top |
-| `gallery-01.jpg` | Gallery grid, position 1 |
-| `gallery-02.jpg` | Gallery grid, position 2 |
-| `gallery-03.jpg` … `gallery-08.jpg` | Gallery grid, positions 3–8 |
+| `hero.png` (or `.jpg`) | Big full-screen photo at the top |
+| `1.png` | Gallery grid, position 1 |
+| `2.png` | Gallery grid, position 2 |
+| `3.png`, `4.png`, `5.png`, ... | Gallery grid, next positions |
+
+**Naming rule:** hero stays `hero`. Gallery photos are numbered `1`, `2`, `3`, and so on — no leading zeros, no `gallery-` prefix. To add a new photo just save it as the next number (if you have 7, save the new one as `8.png`).
 
 ### Recommended specs
 

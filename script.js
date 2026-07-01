@@ -327,9 +327,11 @@
   };
 
   const addGalleryPhoto = () => {
-    const next = data.gallery.length + 1;
-    const padded = String(next).padStart(2, '0');
-    data.gallery.push({image: `images/gallery-${padded}.png`, alt: `Gallery image ${next}`, fit: 'cover', posX: 50, posY: 50, scale: 1});
+    const usedNums = data.gallery
+      .map(g => (g.image.match(/\/(\d+)\.(png|jpg|jpeg)$/i) || [])[1])
+      .filter(Boolean).map(Number);
+    const next = usedNums.length ? Math.max(...usedNums) + 1 : 1;
+    data.gallery.push({image: `images/${next}.png`, alt: `Photo ${next}`, fit: 'cover', posX: 50, posY: 50, scale: 1});
     renderGallery();
     refreshPhotosTab();
   };
